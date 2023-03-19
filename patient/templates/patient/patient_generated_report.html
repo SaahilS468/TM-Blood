@@ -1,0 +1,92 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container min-vh-100 mb-5 p-5 bg-dark">
+    <table class="text-info">
+        <thead>
+            <tr>
+                <th>Label</th>
+                {% if row_wise_table.documents.1.uploaded_at %}
+                    <th class="p-3">{{ row_wise_table.documents.1.uploaded_at }}</th>
+                {% endif %}
+
+                {% if row_wise_table.documents.2.uploaded_at %}
+                    <th class="p-3">{{ row_wise_table.documents.2.uploaded_at }}</th>
+                {% endif %}
+
+                {% if row_wise_table.documents.3.uploaded_at %}
+                    <th class="p-3">{{ row_wise_table.documents.3.uploaded_at }}</th>
+                {% endif %}
+
+                {% if row_wise_table.documents.4.uploaded_at %}
+                    <th class="p-3">{{ row_wise_table.documents.4.uploaded_at }}</th>
+                {% endif %}
+
+                {% if row_wise_table.documents.5.uploaded_at %}
+                    <th class="p-3">{{ row_wise_table.documents.5.uploaded_at }}</th>
+                {% endif %}
+                <th>Compare</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-group-divider">
+            {% for category in row_wise_table.documents.all_category %}
+                <tr><td class="text-center py-3" colspan="7"><h5><b>{{ category }}</b></h5></td></tr>
+                {% for key,val in row_wise_table.items %}
+                    {% if val.5.category == category or val.4.category == category or val.3.category == category or val.2.category == category or val.1.category == category %}
+                        <tr>
+                            <td class="p-2">{{ key }}</td>
+                            
+                            {% if row_wise_table.documents.1.uploaded_at %}
+                                {% if val.1.value %}
+                                    <td class="p-2" bgcolor="{{ val.1.remark_color }}">{{ val.1.value }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if row_wise_table.documents.2.uploaded_at %}
+                                {% if val.2.value %}
+                                    <td class="p-2" bgcolor="{{ val.2.remark_color }}">{{ val.2.value }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if row_wise_table.documents.3.uploaded_at %}
+                                {% if val.3.value %}
+                                    <td class="p-2" bgcolor="{{ val.3.remark_color }}">{{ val.3.value }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if row_wise_table.documents.4.uploaded_at %}
+                                {% if val.4.value %}
+                                    <td class="p-2" bgcolor="{{ val.4.remark_color }}">{{ val.4.value }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if row_wise_table.documents.5.uploaded_at %}
+                                {% if val.5.value %}
+                                    <td class="p-2" bgcolor="{{ val.5.remark_color }}">{{ val.5.value }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            {% endif %}
+                            <td class="p-2" bgcolor="{{ val.5.remark_color }}">{{ val.5.remark }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

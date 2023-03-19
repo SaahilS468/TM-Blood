@@ -1,0 +1,24 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container min-vh-100 bg-dark d-flex align-items-center justify-content-center mb-5">
+    <form method="post" enctype="multipart/form-data" class="bg-light p-5">{% csrf_token %}
+        <p class="lead">Upload Document</p>
+        <div class="mb-3">
+          <div id="emailHelp" class="form-text text-light">We'll never share your email with anyone else.</div>
+          <label for="docname" class="form-label">Document Name</label>
+          {% render_field form.name class+="form-control" type="text" name="docname" required="required" %}
+          <!-- <input type="text" class="form-control" id="docname"> -->
+        </div>
+        <div class="mb-3">
+          <label for="doc" class="form-label"></label>
+          {% render_field form.document class+="form-control" type="file" name="doc" required="required" %}
+          <!-- <input type="file" class="form-control" id="doc"> -->
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </form>
+</div>
+{% endblock content %}

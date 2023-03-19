@@ -1,0 +1,36 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <div class="container min-vh-100 bg-dark d-flex align-items-center justify-content-center mb-5">
+		<form method="post" class="bg-light p-5 m-5">{% csrf_token %}
+			<p class="lead">Patient Details</p>
+			<div class="mb-3">
+			  <div id="emailHelp" class="form-text text-light">We'll never share your email with anyone else.</div>
+			  <label for="fname" class="form-label">First Name</label>
+			  {% render_field form.fname class+="form-control" type="text" name="fname" required="required" %}
+			  <!-- <input type="text" class="form-control" id="fname"> -->
+			</div>
+			<div class="mb-3">
+			  <label for="lname" class="form-label">Last Name</label>
+			  {% render_field form.lname class+="form-control" type="text" name="lname" required="required" %}
+			  <!-- <input type="text" class="form-control" id="lname"> -->
+			</div>
+			<div class="mb-3">
+				<label for="address" class="form-label">Address</label>
+				{% render_field form.address class+="form-control" type="text" name="address" required="required" %}
+				<!-- <input type="text" class="form-control" id="address"> -->
+			</div>
+			<div class="mb-3">
+				<label for="zip" class="form-label">Zip Code</label>
+				{% render_field form.zip class+="form-control" type="text" name="zip" required="required" %}
+				<!-- <input type="number" class="form-control" id="zip"> -->
+			</div>
+			<button type="submit" class="btn btn-primary">Save</button>
+		  </form>
+	</div>
+
+{% endblock content %}

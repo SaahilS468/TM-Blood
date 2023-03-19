@@ -1,0 +1,27 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container min-vh-100 bg-dark d-flex align-items-center justify-content-center mb-5">
+    <form method="post" class="bg-light p-5">{% csrf_token %}
+        <p class="lead">Login</p>
+        <div class="mb-3">
+          <div id="emailHelp" class="form-text text-light">We'll never share your email with anyone else.</div>
+          <label for="username" class="form-label">Username</label>
+          {% render_field form.username class+="form-control" type="text" name="username" required="required" %}
+          <!-- <input type="text" class="form-control" id="uname"> -->
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          {% render_field form.password class+="form-control" type="password" name="password" required="required" %}
+          <!-- <input type="password" class="form-control" id="pass"> -->
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
+      </form>
+</div>
+
+{% endblock content %}
+

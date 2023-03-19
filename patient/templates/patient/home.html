@@ -1,0 +1,27 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+  <div class="container min-vh-100 bg-dark mb-5 p-5">  
+    <div class="container text-light text-center">
+      <h2 class="mb-4">"Your body can stand almost <br>anything. It's your mind that you <br> have to convince"</h2>
+      <small>Developing a habit can be hard. While the logical side of your mind knows you should stick <br> to a workout regimen to see results, the emotional side convinces you that skipping one <br> more day won't hurt anything</small>
+    </div>
+
+    <div class="container d-flex justify-content-evenly align-items-center text-light text-center mt-5 pt-5">
+      <div>
+        <img class="img-fluid w-75" src="https://img.icons8.com/office/256/triangular-bandage.png" alt="">
+        <a class="list-group-item border border-white px-3 py-2 m-5 text-decoration-none" href="{% url 'patient_create' %}">Add Patient</a>
+      </div>
+    
+      <div>
+        <img class="img-fluid w-75" src="https://img.icons8.com/office/256/search-client.png" alt="">
+        <a class="list-group-item border border-white px-3 py-2 m-5 text-decoration-none" href="{% url 'search' %}">Search Patient</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

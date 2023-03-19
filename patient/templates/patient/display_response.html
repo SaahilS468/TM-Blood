@@ -1,0 +1,31 @@
+{% extends 'patient/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container min-vh-100 bg-dark mb-5 p-5">
+        <!-- <p class="lead text-light display-6 pt-3 px-5">Results</p> -->
+        <table class="table table-dark table-striped table-hover text-light overflow-auto">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in all_testresult %}
+                <tr>
+                    <td>{{ result.label }}</td>
+                    <td>{{ result.value }}</td>
+                    <td>{{ result.unit }}</td>
+                    <td><a class="text-light text-decoration-none" href="{% url 'testresult_update' result.pk %}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="border border-white px-3 py-2 my-3 text-light text-decoration-none" href="{% url 'generated_report' patient.pk %}" type="button">Submit</a>
+    </div>
+{% endblock content %}
